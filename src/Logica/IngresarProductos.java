@@ -10,7 +10,7 @@ public class IngresarProductos {
 	{ 
 		try  
 		{ 	
-			RandomAccessFile archivo = new  RandomAccessFile("C:\\Users\\Asus\\Documents\\Taller-de-lenguajes-de-programacion-1\\Restaurante\\datos\\informacion.txt","rw"); 
+			RandomAccessFile archivo = new  RandomAccessFile("datos\\informacion.txt","rw"); 
 			archivo.seek(archivo.length()); 
 			archivo.writeUTF(identificacion); 
 			archivo.writeUTF(nombre); 
