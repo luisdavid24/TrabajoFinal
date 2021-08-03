@@ -1,5 +1,6 @@
 package Logica;
 
+
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Scanner;
@@ -25,7 +26,7 @@ public class ConsumirComida {
 		   archivo.close();
 		   archivo.seek(0);
 		   arregloComida = new String[cantidadComida];
-		   archivo = new RandomAccessFile("C:\\Users\\Asus\\Documents\\Taller-de-lenguajes-de-programacion-1\\Restaurante\\datos\\informacion.txt","rw");
+		   archivo = new RandomAccessFile("datos\\informacion.txt","rw");
 		   archivo.seek(0);		
 		   for(int i=0; i < cantidadComida; i++) {
 		       arregloComida[i] = archivo.readUTF();
@@ -33,7 +34,7 @@ public class ConsumirComida {
 		   archivo.close(); 
 		   int j=0,condicion=1,cantidadAdicional;
 		   System.out.println("Digite el id buscado:");
-		   archivo = new RandomAccessFile("C:\\Users\\Asus\\Documents\\Taller-de-lenguajes-de-programacion-1\\Restaurante\\datos\\informacion.txt","rw");
+		   archivo = new RandomAccessFile("datos\\informacion.txt","rw");
 		   archivo.seek(0);
 		   while(archivo.getFilePointer() < archivo.length() && condicion==1){
 				String comparcion=archivo.readUTF();
@@ -43,7 +44,7 @@ public class ConsumirComida {
 				}
 		   }
 		   archivo.close();
-		   archivo = new RandomAccessFile("C:\\Users\\Asus\\Documents\\Taller-de-lenguajes-de-programacion-1\\Restaurante\\datos\\informacion.txt","rw");
+		   archivo = new RandomAccessFile("datos\\informacion.txt","rw");
 		   archivo.seek(0);
 		   int cantidad=Integer.parseInt(arregloComida[j+1]);
 		   cantidad-=cantidadGastada;

@@ -25,7 +25,7 @@ public class IngresarProductos {
 		
 		try  
 		{ 	
-			RandomAccessFile archivo = new  RandomAccessFile("C:\\Users\\rober\\Desktop\\Programas_Eclipse\\Insumos.txt","rw"); 
+			RandomAccessFile archivo = new  RandomAccessFile("datos\\Insumos.txt","rw"); 
 			archivo.seek(archivo.length()); 
 			archivo.writeUTF(identificacion); 
 			archivo.writeUTF(nombre); 

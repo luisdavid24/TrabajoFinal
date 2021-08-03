@@ -50,7 +50,7 @@ public class Verificar {
 		
 		try  
 		{ 	
-			RandomAccessFile archivo = new  RandomAccessFile("C:\\Users\\rober\\Desktop\\Programas_Eclipse\\informacion.txt","r"); 
+			RandomAccessFile archivo = new  RandomAccessFile("datos\\informacion.txt","r"); 
 			archivo.seek(0);
 			
 		    while(archivo.getFilePointer() < archivo.length()){
