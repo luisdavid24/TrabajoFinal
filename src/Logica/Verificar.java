@@ -6,23 +6,67 @@ import java.io.RandomAccessFile;
 
 public class Verificar {
 	
-	public Verificar(String identificacion, int cantidadMinima,int cantidadMenos)  
-	{ 	int condicion=1;
+	private String identificacion;
+	private int cantidadMenos;
+	
+	public Verificar() {}
+	
+	public Verificar(String identificacion, int cantidadMenos) {
+		
+		this.identificacion = identificacion;
+		this.cantidadMenos = cantidadMenos;
+	}
+
+
+	public String getIdentificacion() {
+		return identificacion;
+	}
+
+
+	public void setIdentificacion(String identificacion) {
+		this.identificacion = identificacion;
+	}
+
+
+	public int getCantidadMenos() {
+		return cantidadMenos;
+	}
+
+
+	public void setCantidadMenos(int cantidadMenos) {
+		this.cantidadMenos = cantidadMenos;
+	}
+	
+	
+
+
+	public String VerificarInventario(String getIdentificacion,  int getCantidadMenos ) { // cantidad menos es lo que se utiliza para una preparacion, este parametro se debe pasar siempre que se prepare un producto
+		
+		int condicion=1;
+		int cantidadMinima = 1000;
+		String mostrar ="";
+		boolean p= true;
+		
+		
 		try  
 		{ 	
-			RandomAccessFile archivo = new  RandomAccessFile("datos\\informacion.txt","r"); 
+			RandomAccessFile archivo = new  RandomAccessFile("C:\\Users\\rober\\Desktop\\Programas_Eclipse\\informacion.txt","r"); 
 			archivo.seek(0);
 			
 		    while(archivo.getFilePointer() < archivo.length()){
 		        	String codigo=archivo.readUTF();
-		        	if(codigo.equals(identificacion)) {
+		        	if(codigo.equals(getIdentificacion)) {
 		        		String comida=archivo.readUTF();
 		        		int cantidad=Integer.parseInt(archivo.readUTF());
-		        		cantidad-=cantidadMenos;
+		        		cantidad-=getCantidadMenos;
 		        		if(cantidad<=cantidadMinima) {
-		        			System.out.println("No se tiene la cantidad minima de "+comida);
-		        			System.out.println("Por favor agrega mas cantidad de "+comida);
-		           			condicion=2;
+		        			mostrar = "no";
+		        			p=false;
+		           			//condicion=2;
+		        		}
+		        		else {
+		        			mostrar = "si";
+		        			p=true;
 		        		}
 		        	}
 		   }
@@ -31,36 +75,15 @@ public class Verificar {
 			   	new ConsumirComida(identificacion,cantidadMenos);
 		   }*/
 		}catch(IOException e) {System.out.print(e);} 
-	} 
+		
+		return mostrar; 
+	
+	}
 
+	@Override
+	public String toString() {
+		return "Verificar [identificacion=" + identificacion + "]";
+	}
+	
 }
-
-
-/*
- * 
- * informacion.txt
- * salsa.txt
- * comidas.txt
- * 
- * funcion preparacion()
- * RandomAccessFile comida
- * ['arroz-coco','aceite','arroz','coco','salsa-coco'] 
- * 
- * funcion preparcion2(20 b2 40 c4 50 5f)
- * RandomAccessFile salsa
- * ['salsa-coco','coco','vailla]
- * 30 c1 20 c4
- * 
- * 
- * funcion preparcion3(40,c1 )
- * RandomAccessFile informacion
- * [coco 20,vailla 40]
- * bloqueo
- * 
- * 
- * Logica2
- * 
- * 
- * menu->salsa->inventario.
- * */
 
