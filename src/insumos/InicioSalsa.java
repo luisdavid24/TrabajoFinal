@@ -22,54 +22,13 @@ public class InicioSalsa {
 			opcion = captura.nextInt(); 
 			switch(opcion)  
 			{ 
-				case 1: 
-					//ListaAlimentos tiene la informacion del inventario
-					ArrayList<alimentos> ListaAlimentos=new ArrayList<alimentos>();
-					try {
-						try {
-							new RecuperarInf(ListaAlimentos);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					} catch (ClassNotFoundException e1) {
-						e1.printStackTrace();
-					}
-					String listaIngredientes[]= {"2","3"};//id cantidad id cantidad
-					boolean  condicion=true;
-					for(int i=0;i<listaIngredientes.length;i+=2) {
-						int id=Integer.parseInt(listaIngredientes[i]);
-						float cantidad=Float.parseFloat(listaIngredientes[i+1]);
-						Verificar objeto=new Verificar();
-						 try {
-							 //condicion se mira que se pueda gastar cada producto
-							condicion=objeto.condicion(id,cantidad,ListaAlimentos,condicion);
-						} catch (ClassNotFoundException e) {
-							e.printStackTrace();
-						}
-						
-						
-					}
-					if(condicion==true) {
-						float valor=0;
-						SalsasDeLaCasa salsa1 =new SalsasDeLaCasa();
-						
-						for(int i=0;i<listaIngredientes.length;i+=2) {
-							int id=Integer.parseInt(listaIngredientes[i]);
-							float cantidad=Float.parseFloat(listaIngredientes[i+1]);
-							new ConsumirComida(id,cantidad,ListaAlimentos);//Consumiendo el inventario
-							valor+=salsa1.valorSalsa(listaIngredientes,cantidad, ListaAlimentos);
-						}
-						ArrayList<Salsa> insumosArrayList=new ArrayList<Salsa>();
-						try {
-							new RecuperSalsa(insumosArrayList);
-						} catch (ClassNotFoundException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-						salsa1.agregarSalsa(insumosArrayList,20, valor, 10, "Salsa1");
-						
-					}
+				case 1:
+					String nombreSalsa="Salsa1";
+					float cantidadSalsa=20;
+					int idSalsa=1;
+					String listaIngredientes[]= {"4","1"};//{id ,cantidad ,id, cantidad}
+					//generarSalsa es una forma de generar salsa sin tener que repetir tanto codigo :)
+					new generarSalsa(listaIngredientes,cantidadSalsa,idSalsa, nombreSalsa);
 					System.out.println("1. Salsa #1\n2. Salsa #2\n3. Salsa #3\n0. Salir "); 
 					break;
 				case 4:
@@ -87,3 +46,4 @@ public class InicioSalsa {
 	}
 
 }
+

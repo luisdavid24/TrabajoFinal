@@ -22,9 +22,10 @@ public class SalsasDeLaCasa {
 	public SalsasDeLaCasa() {}
 	
 	public float valorSalsa(String listaIngredientes[],float cantidad,ArrayList<alimentos> ListaAlimentos) {
-		float valorSalsa=0;
 		//listaIngredientes ->ingredientes
 		//ListaAlimentos ->inventario
+				
+		float valorSalsa=0;
 		for(int i=0;i<listaIngredientes.length;i+=2) {
 			int identificacion=Integer.parseInt(listaIngredientes[i]);
 			for(alimentos e : ListaAlimentos) {
@@ -40,31 +41,35 @@ public class SalsasDeLaCasa {
 		
 	}
 	public void agregarSalsa(ArrayList<Salsa> salsaLista,float cantidad,float valor,int id,String nombre) {
-		boolean condicion=false;
+		boolean condicion=true;
+		//Aqui se la salsa existe solo agrego mas cantidad
+		// sino entonces creo un objeto de Salsa y lo agrego a salsaLista
 		for(Salsa e : salsaLista) {
 			if(e.getId()==id) {
-				condicion=true;
+				condicion=false;
 				e.agregandoCantidad(cantidad);
+				
 			}
 		}
-		if(condicion!=true) {
+		if(condicion==true) {
 			salsaLista.add(new Salsa(id,cantidad,valor,nombre));
-			Salsa[] arregloAlimento = new Salsa[salsaLista.size()];
-			for(int i=0;i<salsaLista.size();i++) {
-				arregloAlimento[i]=salsaLista.get(i);
-			}
-			try {
-				FileOutputStream ruta_salida = new FileOutputStream("datos\\insumos.txt");
-				ObjectOutputStream archivo_salida = new ObjectOutputStream(ruta_salida);
-				archivo_salida.writeObject(arregloAlimento);
-				archivo_salida.close();
-				ruta_salida.close();
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			//Aqui lo agrego
+		}
+		//Aqui paso la informacion del salsaLista al archivo plano.
+		//Agregando una salsa nueva o solo haciedo validos los cambios.
+		Salsa[] arregloAlimento = new Salsa[salsaLista.size()];
+		for(int i=0;i<salsaLista.size();i++) {
+			arregloAlimento[i]=salsaLista.get(i);
+		}
+		try {
+			FileOutputStream ruta_salida = new FileOutputStream("datos\\insumos.txt");
+			ObjectOutputStream archivo_salida = new ObjectOutputStream(ruta_salida);
+			archivo_salida.writeObject(arregloAlimento);
+			archivo_salida.close();
+			ruta_salida.close();
 			
-			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 				
