@@ -1,89 +1,64 @@
 package Logica;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 
 public class Verificar {
-	
-	private String identificacion;
-	private int cantidadMenos;
-	
 	public Verificar() {}
 	
-	public Verificar(String identificacion, int cantidadMenos) {
+		public Verificar(int identificacion,float cantidadGastada,ArrayList<alimentos> ListaAlimentos) {
+			boolean condicion1=false;
+			boolean condicion2=false;
+			for(alimentos e : ListaAlimentos) {
+				if(e.getId()==identificacion) {
+					condicion1=true;
+					float aux=e.getCantidad();
+					aux-=cantidadGastada;
+					if(aux>e.getVerificarCantidad()) {
+						condicion2=true;
+					}
+				}
+			}
+			if(condicion1==true && condicion2==true) {
+				new ConsumirComida(identificacion,cantidadGastada,ListaAlimentos);
+			}else if(condicion1==false) {
+				System.out.println("No se tiene el producto con ese ID: "+identificacion);
+			}else {
+				System.out.println("No se tiene la cantidad necesaria del producto.");
+			}
+
+	}
+	public boolean condicion(int identificacion,float cantidadGastada,ArrayList<alimentos> ListaAlimentos,boolean condicion) throws ClassNotFoundException {
+		boolean condicion1=false;
+		boolean condicion2=false;
+			for(alimentos e : ListaAlimentos) {
+				if(e.getId()==identificacion) {
+					condicion1=true;
+					float aux=e.getCantidad();
+					aux-=cantidadGastada;
+					if(aux>e.getVerificarCantidad()) {
+						condicion2=true;
+					}
+				}
+			}
+			if(condicion1==true && condicion2==true) {
+					return condicion;
+			}else if(condicion1==false) {
+				System.out.println("No se tiene el producto con ese ID: "+identificacion);
+				condicion=false;
+			}else {
+				System.out.println("No se tiene la cantidad necesaria del producto.");
+				condicion=false;
+			}
+			return condicion;
 		
-		this.identificacion = identificacion;
-		this.cantidadMenos = cantidadMenos;
-	}
+						
 
+		}
 
-	public String getIdentificacion() {
-		return identificacion;
-	}
-
-
-	public void setIdentificacion(String identificacion) {
-		this.identificacion = identificacion;
-	}
-
-
-	public int getCantidadMenos() {
-		return cantidadMenos;
-	}
-
-
-	public void setCantidadMenos(int cantidadMenos) {
-		this.cantidadMenos = cantidadMenos;
-	}
-	
-	
-
-
-	public String VerificarInventario(String getIdentificacion,  int getCantidadMenos ) { // cantidad menos es lo que se utiliza para una preparacion, este parametro se debe pasar siempre que se prepare un producto
-		
-		int condicion=1;
-		int cantidadMinima = 1000;
-		String mostrar ="";
-		boolean p= true;
-		
-		
-		try  
-		{ 	
-			RandomAccessFile archivo = new  RandomAccessFile("datos\\informacion.txt","r"); 
-			archivo.seek(0);
-			
-		    while(archivo.getFilePointer() < archivo.length()){
-		        	String codigo=archivo.readUTF();
-		        	if(codigo.equals(getIdentificacion)) {
-		        		String comida=archivo.readUTF();
-		        		int cantidad=Integer.parseInt(archivo.readUTF());
-		        		cantidad-=getCantidadMenos;
-		        		if(cantidad<=cantidadMinima) {
-		        			mostrar = "no";
-		        			p=false;
-		           			//condicion=2;
-		        		}
-		        		else {
-		        			mostrar = "si";
-		        			p=true;
-		        		}
-		        	}
-		   }
-		   archivo.close(); 
-		   /*if(condicion==1) {
-			   	new ConsumirComida(identificacion,cantidadMenos);
-		   }*/
-		}catch(IOException e) {System.out.print(e);} 
-		
-		return mostrar; 
-	
-	}
-
-	@Override
-	public String toString() {
-		return "Verificar [identificacion=" + identificacion + "]";
-	}
-	
 }
 

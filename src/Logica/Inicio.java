@@ -1,5 +1,7 @@
 package Logica;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -7,24 +9,81 @@ public class Inicio {
 
 	public static void main(String[] args) {
 
-		Scanner pedir = new Scanner(System.in); 
+		Scanner captura = new Scanner(System.in); 
 		int opcion; 
-		System.out.print("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n4. Verificar\n0. Salir "); 
-		System.out.println(); 
-		System.out.println("Selecciones la opción:"); 
-		String nombre,identificacion,cantidad,valor;
+		ArrayList<alimentos> ListaAlimentos=new ArrayList<alimentos>();
+		
+		System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n4. Verificar\n0. Salir "); 
 		do{ 
-			opcion = pedir.nextInt(); 
+			opcion = captura.nextInt(); 
 			switch(opcion)  
 			{ 
 				case 1: 
+					int opcion2=0;
+					try {
+						try {
+							new RecuperarInf(ListaAlimentos);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+					} catch (ClassNotFoundException e1) {
+						e1.printStackTrace();
+					}
+					do{ 
+						System.out.println("Especifique el Id : ");
+						int id = captura.nextInt();
+						System.out.println("Especifique el nombre: ");
+						String nombre = captura.next();
+						System.out.println("Especifique el cantidad : " );
+						float cantidad = captura.nextFloat();
+						System.out.println("Especifique el valor: ");
+						float valor = captura.nextFloat();
+						System.out.println("Especifique la cantidad minima: ");
+						float verificar = captura.nextFloat();
+						ListaAlimentos.add(new alimentos(id,nombre,cantidad,valor,verificar));
+						new IngresarProductos(ListaAlimentos);
+						System.out.println("Digite cero si ya no desea ingresar mas elementos: ");
+						opcion2 = captura.nextInt();
+						
+					}while (opcion2 != 0);
+					System.out.print("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n4. Verificar\n0. Salir "); 
+					break;
+
+				case 2: 
+					try {
+						new MostrarProductos();
+					} catch (ClassNotFoundException e) {
+						e.printStackTrace();
+					}
+					System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n4. Verificar\n0. Salir "); 
+					break;
+
+				case 3:
+					//ya voy 
+					break;
+
+				case 4: 
+					System.out.println("Ingrese el Id que desea cambiar: ");
+					int identificacion = captura.nextInt();
+					System.out.println("Ingrese la cantidad que desea cambiar");
+					float cantidadGastada = captura.nextInt();
+					new Verificar(identificacion,cantidadGastada,ListaAlimentos);
+					System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n4. Verificar\n0. Salir "); 
 					break;
 				default:
 					break;
 			}		
 		}while (opcion != 0); 
-
+		
+		
+				
 		
 	}
 
 }
+
+//ListaAlimentos.ensureCapacity(numero); definir la capacidad
+//ListaAlimentos.trimTosize(); es para cortar la memoria del array
+//set->reemplazar get->optener 
+//ListaAlimentos.size()
+		

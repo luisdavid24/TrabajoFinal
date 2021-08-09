@@ -1,132 +1,56 @@
 package Logica;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
+
 public class ModificarProducto {
-
-public ModificarProducto() {}
+	Scanner captura = new Scanner(System.in); 
 	
-	public void ModificarProducto() {
-		
-		
-		RandomAccessFile archivo;
-		Scanner ciclo = new Scanner(System.in);
-		int      cantidadComida = 0;
-		String[] arregloComida;
-		
+	public ModificarProducto(ArrayList<alimentos> ListaAlimentos) throws ClassNotFoundException{
 		try {
-			archivo = new RandomAccessFile("datos\\informacion.txt","rw");
-			archivo.seek(0);
-		    cantidadComida = 0;
-		    while(archivo.getFilePointer() < archivo.length()){
-		        	archivo.readUTF();
-		        	cantidadComida++;
-		   }
-		   archivo.close();
-		   arregloComida = new String[cantidadComida];
-		   archivo = new RandomAccessFile("datos\\informacion.txt","rw");
-		   archivo.seek(0);		
-		   for(int i=0; i < cantidadComida; i++) {
-		       arregloComida[i] = archivo.readUTF();
-		   }
-		   archivo.close();
-		   String idBusqueda;
-		   int j=0,condicion=1,cantidadAdicional;
-		   System.out.println("Digite el id buscado:");
-		   idBusqueda = ciclo.nextLine();
-		   archivo = new RandomAccessFile("datos\\informacion.txt","rw");
-		   archivo.seek(0);
-		   while(archivo.getFilePointer() < archivo.length() && condicion==1){
-				String comparcion=archivo.readUTF();
-				j++;
-				if(comparcion.equals(idBusqueda)){
-					condicion=2;
+			FileInputStream ruta_entrada = new FileInputStream("datos\\informacion.txt");
+			ObjectInputStream leer_datos = new ObjectInputStream(ruta_entrada);
+			alimentos[] datos_leidos = (alimentos[]) leer_datos.readObject();
+			leer_datos.close();
+			if(datos_leidos!=null) {
+				System.out.println("Especifique el Id que quiere modificar: ");
+				int idBusqueda=captura.nextInt();
+				for(int i=0;i<datos_leidos.length;i++) {
+					if(datos_leidos[i].getId()==idBusqueda) {
+						System.out.println("Nuevo el Id : ");
+						int id = captura.nextInt();
+						System.out.println("Nuevo nombre: ");
+						String nombre = captura.next();
+						System.out.println("Nueva cantidad : " );
+						float cantidad = captura.nextFloat();
+						System.out.println("Nuevo valor: ");
+						float valor = captura.nextFloat();
+						System.out.println("Nueva cantidad minima: ");
+						float verificar = captura.nextFloat();
+						datos_leidos[i].setCantidad(cantidad);
+						datos_leidos[i].setId(id);
+						datos_leidos[i].setNombre(nombre);
+						datos_leidos[i].setValor(valor);
+						datos_leidos[i].setVerificarCantidad(verificar);
+					}
 				}
-		   }
-		   archivo.close();
-		   archivo = new RandomAccessFile("datos\\informacion.txt","rw");
-		   archivo.seek(0);
-		   System.out.println("Digite la cantidad de Kg del producto deseado: ");
-		   cantidadAdicional = ciclo.nextInt(); 
-		   cantidadAdicional+=Integer.parseInt(arregloComida[j+1]);
-		   arregloComida[j+1]=Integer.toString(cantidadAdicional);
-		   for(int i=0; i < cantidadComida; i++)
-			{
-			     archivo.writeUTF(arregloComida[i]);
-			}	
-			archivo.close();		
-		        
-			}catch(IOException e) {
-				System.out.println("Archivo no existe.");
+				for(int i=0;i<datos_leidos.length;i++) {
+					ListaAlimentos.add(datos_leidos[i]);
+				}
+				new IngresarProductos(ListaAlimentos);
 				
 			}
-		
-		
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
-	
-	//---------------------
-	
-	public void ModificarProductoInventario(String idBusqueda, int cantidadAdicional) {
-		
-		
-		RandomAccessFile archivo;
-		Scanner ciclo = new Scanner(System.in);
-		int      cantidadComida = 0;
-		String[] arregloComida;
-		
-		try {
-			archivo = new RandomAccessFile("datos\\informacion.txt","rw");
-			archivo.seek(0);
-		    cantidadComida = 0;
-		    while(archivo.getFilePointer() < archivo.length()){
-		        	archivo.readUTF();
-		        	cantidadComida++;
-		   }
-		   archivo.close();
-		   arregloComida = new String[cantidadComida];
-		   archivo = new RandomAccessFile("datos\\informacion.txt","rw");
-		   archivo.seek(0);		
-		   for(int i=0; i < cantidadComida; i++) {
-		       arregloComida[i] = archivo.readUTF();
-		   }
-		   archivo.close();
-		   //String idBusqueda;
-		   int j=0,condicion=1; //cantidadAdicional;
-		   //System.out.println("Digite el id buscado:");
-		   //idBusqueda = ciclo.nextLine();
-		   archivo = new RandomAccessFile("datos\\informacion.txt","rw");
-		   archivo.seek(0);
-		   while(archivo.getFilePointer() < archivo.length() && condicion==1){
-				String comparcion=archivo.readUTF();
-				j++;
-				if(comparcion.equals(idBusqueda)){
-					condicion=2;
-				}
-		   }
-		   archivo.close();
-		   archivo = new RandomAccessFile("datos\\informacion.txt","rw");
-		   archivo.seek(0);
-		   System.out.println("Digite la cantidad de Kg del producto deseado: ");
-		   cantidadAdicional = ciclo.nextInt(); 
-		   cantidadAdicional-=Integer.parseInt(arregloComida[j+1]);
-		   arregloComida[j+1]=Integer.toString(cantidadAdicional);
-		   for(int i=0; i < cantidadComida; i++)
-			{
-			     archivo.writeUTF(arregloComida[i]);
-			}	
-			archivo.close();		
-		        
-			}catch(IOException e) {
-				System.out.println("Archivo no existe.");
-				
-			}
-		
-	}
-
 }
 
