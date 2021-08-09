@@ -26,6 +26,7 @@ public class Salsa implements Serializable{
 	public void setValor(float valor) {
 		this.valor = valor;
 	}
+	
 	public int getId() {
 		return id;
 	}
@@ -37,6 +38,9 @@ public class Salsa implements Serializable{
 	}
 	public void setCantidad(float cantidad) {
 		this.cantidad = cantidad;
+	}
+	public void agregandoCantidad(float cantidad) {
+		this.cantidad += cantidad;
 	}
 	public void setGastar(float cantidad) {
 		this.cantidad -= cantidad;

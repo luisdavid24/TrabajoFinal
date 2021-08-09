@@ -23,8 +23,8 @@ public class SalsasDeLaCasa {
 	
 	public float valorSalsa(String listaIngredientes[],float cantidad,ArrayList<alimentos> ListaAlimentos) {
 		float valorSalsa=0;
-		//listaIngredientes ingredientes
-		//ListaAlimentos inventario
+		//listaIngredientes ->ingredientes
+		//ListaAlimentos ->inventario
 		for(int i=0;i<listaIngredientes.length;i+=2) {
 			int identificacion=Integer.parseInt(listaIngredientes[i]);
 			for(alimentos e : ListaAlimentos) {
@@ -44,7 +44,7 @@ public class SalsasDeLaCasa {
 		for(Salsa e : salsaLista) {
 			if(e.getId()==id) {
 				condicion=true;
-				e.setCantidad(cantidad);
+				e.agregandoCantidad(cantidad);
 			}
 		}
 		if(condicion!=true) {
