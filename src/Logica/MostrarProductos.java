@@ -12,8 +12,9 @@ public class MostrarProductos {
 			ObjectInputStream leer_datos = new ObjectInputStream(ruta_entrada);
 			alimentos[] datos_leidos = (alimentos[]) leer_datos.readObject();
 			leer_datos.close();
+			System.out.println("Nombre: \t\tId: \t\tCantidad(g) \t\tValor($): \t\tCantidad minima: ");
 			for(alimentos e : datos_leidos) {
-				System.out.println("Nombre: "+e.getNombre()+" Id: "+e.getId()+" Cantidad: "+e.getCantidad()+"Kg Valor: "+e.getValor()+"$"+" Cantidad minima: "+e.getVerificarCantidad());
+				System.out.println(" "+e.getNombre()+" \t\t\t"+e.getId()+" \t\t"+e.getCantidad()+" \t\t"+e.getValor()+"$"+" \t\t"+e.getVerificarCantidad());
 			}
 		}catch (IOException e) {
 			e.printStackTrace();
@@ -21,29 +22,3 @@ public class MostrarProductos {
 		
 	}
 }
-//Aqui se va traer la informacion
-
-
-
-/*
-public MostrarProductos() 
-	{ 
-		String wcadena=""; 
-	try  
-	{ 
-		RandomAccessFile archivo = new RandomAccessFile("datos\\informacion.txt","r"); 
-		archivo.seek(0); 
-		while(archivo.getFilePointer() < archivo.length()) 
-		{ 
-			wcadena = "Codigo: "+archivo.readUTF() + " "; 
-			wcadena += archivo.readUTF() + " "; 
-			wcadena += archivo.readUTF() + "Kg  "; 
-			wcadena += archivo.readUTF() + "$ "; 
-			System.out.println(wcadena); 
-		}
-		archivo.close(); 
-	}catch(IOException e) {System.out.print(e);} 
-	} 
-
-
-*/

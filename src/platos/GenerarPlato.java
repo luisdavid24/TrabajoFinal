@@ -9,6 +9,7 @@ import Logica.ConsumirComida;
 import Logica.RecuperarInf;
 import Logica.Verificar;
 import Logica.alimentos;
+import insumos.ConsumirInsumos;
 import insumos.RecuperarInsumos;
 import insumos.Salsa;
 
@@ -81,19 +82,22 @@ public class GenerarPlato {
 		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace();
 		}
-		int valorPlato=999;
-		//consumir los  el inventario
-		for(int i=0;i<listaIngredientes.length;i+=2) {
-			int identificacion=Integer.parseInt(listaIngredientes[i]);
-			float cantidadGastada=Float.parseFloat(listaIngredientes[i+1]);
+		
+		//consumir las salsa
+		for(int i=0;i<listaInsumos.length;i+=2) {
+			int identificacion=Integer.parseInt(listaInsumos[i]);
+			float cantidadGastada=Float.parseFloat(listaInsumos[i+1]);
 			new ConsumirComida(identificacion,cantidadGastada,ListaAlimentos);
 		}
+		
 		//consumir los insumos
-		for(int i=0;i<listaInsumos.length;i+=2) {
-			int id=Integer.parseInt(listaInsumos[i]);
-			float cantidad=Float.parseFloat(listaInsumos[i+1]);
-			//tengo que hacer un metodo para gastar los insumos
+		for(int i=0;i<listaIngredientes.length;i+=3) {
+			int id=Integer.parseInt(listaIngredientes[i]);
+			float cantidad=Float.parseFloat(listaIngredientes[i+1]);
+			float cantidadMinima=Float.parseFloat(listaIngredientes[i+2]);
+			new ConsumirInsumos(id,cantidad,cantidadMinima,arraySalsa);
 		}
+		int valorPlato=999;
 		boolean condicion3=true;
 			//Aqui se genera un objeto o se modifica el que ya existe
 			for(ObjetoPlato e : ListaPlato) {
@@ -123,7 +127,7 @@ public class GenerarPlato {
 				}
 			}
 		}
-		int nuevotamano=insumosTamano+(listaTamano/2)-contador;
+		int nuevotamano=insumosTamano+(listaTamano/2)-contador+1;
 		aux =new String[nuevotamano];
 		int l=0;
 		for(int i=0;i<insumosTamano;i++) {

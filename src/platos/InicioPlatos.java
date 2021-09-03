@@ -1,5 +1,6 @@
 package platos;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,13 +10,13 @@ import insumos.generarSalsa;
 
 public class InicioPlatos {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
 
 		Scanner captura = new Scanner(System.in); 
 		int opcion; 
 
 		System.out.println("Bienvenido por favor seleccion cada una de nuestras opciones"); 
-		System.out.println("1. Plato #1\n2.Mostrar #2\n0. Salir "); 
+		System.out.println("1.Generar el plato #1\n2.Mostrar el plato #2\n3.Mostrar los insumos consumidos\n4.Mostrar todos los platos\n0. Salir "); 
 		int total=0;
 		ArrayList<ObjetoPlato> arrayPlato=new ArrayList<ObjetoPlato>();
 		String[]  arrayInsumos= {"0"};
@@ -26,13 +27,9 @@ public class InicioPlatos {
 			switch(opcion)  
 			{ 
 				case 1:
-					//HACER CON ARCHIVO PLANO
-					 
-					//Se debe gastar la los insumos  y las salsa si se puede 
-					String listaIngredientes[]= {"4","1","10"};//{id, cantidad,cantidad-Minima}
-					String listaInsumos[]= {"4","1"};
+					String listaIngredientes[]= {"1","1","2"};//{id, cantidad,cantidad-Minima} salsa
+					String listaInsumos[]= {"1","1"};//{id, cantidad} insumo
 					GenerarPlato generar1=new GenerarPlato();
-					
 					boolean condicion=generar1.saberSiPuedeCobrar(listaIngredientes, listaInsumos);
 					
 					if(condicion==true) {
@@ -47,9 +44,14 @@ public class InicioPlatos {
 					break;
 
 				case 3:
-					
+					new MostrarLoConsumido(arrayInsumos,arrayIngredientes);
 					break;
-
+				case 4:
+					new MostrarPlatos();
+					break;
+				case 5:
+					new GuardarPlato(arrayPlato);
+					break;
 				default:
 					break;
 			}		

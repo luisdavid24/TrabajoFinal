@@ -74,6 +74,29 @@ public class SalsasDeLaCasa {
 		
 				
 	}
+public void agregarSalsaModificada(ArrayList<Salsa> salsaModificada) {
+				
+		
+		Salsa[] arregloAlimento = new Salsa[salsaModificada.size()];
+		
+		for(int i=0;i<salsaModificada.size();i++) {
+			arregloAlimento[i]=salsaModificada.get(i);
+		}
+		
+		try {
+			FileOutputStream ruta_salida = new FileOutputStream("datos\\insumos.txt");
+			ObjectOutputStream archivo_salida = new ObjectOutputStream(ruta_salida);
+			archivo_salida.writeObject(arregloAlimento);
+			archivo_salida.close();
+			ruta_salida.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+				
+	}
+
 
 	
 }
