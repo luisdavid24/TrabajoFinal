@@ -41,8 +41,8 @@ public class ManipulacionDeInsumos {
 						
 					case 3:
 						nombreSalsa="Tortilla";
-						 cantidadSalsa=10000;
-						 idSalsa=3; 
+						cantidadSalsa=10000;
+						idSalsa=3; 
 						System.out.println("la salsa de Ajo tiene los siguientes ingredicentes (Sal - cebolla - Arina\n)"); 
 						String listaIngredientes2[]= {"2","20","3","40","5","400"};//{id ,cantidad ,id, cantidad} 
 						//generarSalsa es una forma de generar salsa sin tener que repetir tanto codigo :)

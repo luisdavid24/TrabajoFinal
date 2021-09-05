@@ -13,8 +13,9 @@ public class ValorDelPlato {
 public ValorDelPlato() {}
 	
 	
-	public float valorPlato(int idPlato, ArrayList<Salsa> listaSalsas, ArrayList<alimentos> ListaAlimentos) {
-		
+	public float valorPlato(int idPlato) {
+		ArrayList<Salsa> listaSalsas=new ArrayList<Salsa>();
+		ArrayList<alimentos> ListaAlimentos=new ArrayList<alimentos>();
 		float valortotal = 0;
 		float otrosGastos = 8000;
 		float valorInsumo = 0;

@@ -68,7 +68,7 @@ public class GenerarPlato {
 		
 	}
 	
-	public ArrayList<ObjetoPlato> modificarArrayPlato(String listaIngredientes[],String listaInsumos[],ArrayList<ObjetoPlato> ListaPlato,int idPlato,int cantidadGenerada,String nombre) {
+	public ArrayList<ObjetoPlato> modificarArrayPlato(String listaIngredientes[],String listaInsumos[],ArrayList<ObjetoPlato> ListaPlato,int idPlato,int cantidadGenerada,String nombre,float valorPlato) {
 		ArrayList<alimentos> ListaAlimentos=new ArrayList<alimentos>();
 		try {
 			new RecuperarInf(ListaAlimentos);
@@ -97,7 +97,6 @@ public class GenerarPlato {
 			float cantidadMinima=Float.parseFloat(listaIngredientes[i+2]);
 			new ConsumirInsumos(id,cantidad,cantidadMinima,arraySalsa);
 		}
-		int valorPlato=999;
 		boolean condicion3=true;
 			//Aqui se genera un objeto o se modifica el que ya existe
 			for(ObjetoPlato e : ListaPlato) {

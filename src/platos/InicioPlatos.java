@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import factura.ValorDelPlato;
 import insumos.MostrarInsumos;
 import insumos.Salsa;
 import insumos.generarSalsa;
@@ -33,9 +34,16 @@ public class InicioPlatos {
 					boolean condicion=generar1.saberSiPuedeCobrar(listaIngredientes, listaInsumos);
 					
 					if(condicion==true) {
-						arrayPlato=generar1.modificarArrayPlato(listaIngredientes, listaInsumos, arrayPlato, 1, 20,"Plato1");
+						ValorDelPlato valor1=new ValorDelPlato();
+						int id=1;
+						float valorOperacion=valor1.valorPlato(id);
+						arrayPlato=generar1.modificarArrayPlato(listaIngredientes, listaInsumos, arrayPlato, id, 20,"Plato1",valorOperacion);
 						arrayInsumos=generar1.llenarArrayIngrediente(arrayInsumos, listaIngredientes);
 						arrayIngredientes=generar1.llenarArrayIngredientes(arrayInsumos,listaIngredientes);
+						System.out.println("tamaño: "+arrayPlato.size());
+						
+					}else {
+						System.out.println("No se puede generar el plato no tiene lo necesario");
 						
 					}
 					break;
