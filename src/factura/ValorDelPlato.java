@@ -24,6 +24,11 @@ public ValorDelPlato() {}
 		float cantIns1=0, cantIns2=0, cantIns3=0, cantInv1=0, cantInv2=0, cantInv3=0;
 		float valorins1=0, valorins2=0, valorins3=0, valorinv1=0, valorinv2=0, valorinv3=0;
 		int idInsu1 =0, idInsu2=0, idInsu3=0, idInve1=0, idInve2=0, idInve3=0;
+		int listaValores1[]= {5,500,6,200,7,0};
+		int listaValores2[]= {8,500,6,200,9,400,6,300,4,150,3,150};
+		/*int listaValores3[]= {5,500,6,200,7,0};
+		int listaValores4[]= {5,500,6,200,7,0};
+		int listaValores5[]= {5,500,6,200,7,0};*/
 		
 		
 		if(idPlato ==1) { // este plato es tacos mexicanos(insumos(frijol refrito, guacamole) - inventario(queso, tacos))

@@ -13,7 +13,7 @@ public class Inicio {
 		int opcion; 
 		ArrayList<alimentos> ListaAlimentos=new ArrayList<alimentos>();
 		//En ListaAlimentos se guarda toda la informacion del inventario
-		System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n4. Verificar\n0. Salir "); 
+		System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n0. Salir "); 
 		do{ 
 			opcion = captura.nextInt(); 
 			switch(opcion)  
@@ -23,8 +23,6 @@ public class Inicio {
 					try {
 						try {
 							new RecuperarInf(ListaAlimentos);
-							//Aqui se recupera la informacion si es que informacion en
-							//el archivo plano
 						} catch (IOException e) {
 							e.printStackTrace();
 						}
@@ -40,16 +38,14 @@ public class Inicio {
 						float cantidad = captura.nextFloat();
 						System.out.println("Especifique el valor: ");
 						float valor = captura.nextFloat();
-						System.out.println("Especifique la cantidad minima: ");
-						float verificar = captura.nextFloat();
+						float verificar = 300;
 						ListaAlimentos.add(new alimentos(id,nombre,cantidad,valor,verificar));
-						//Aqui simplemente se agrega los alimento nuevos en el archivo plano
 						new IngresarProductos(ListaAlimentos);
 						System.out.println("Digite cero si ya no desea ingresar mas elementos: ");
 						opcion2 = captura.nextInt();
 						
 					}while (opcion2 != 0);
-					System.out.print("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n4. Verificar\n0. Salir "); 
+					System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n0. Salir "); 
 					break;
 
 				case 2: 
@@ -58,24 +54,16 @@ public class Inicio {
 					} catch (ClassNotFoundException e) {
 						e.printStackTrace();
 					}
-					System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n4. Verificar\n0. Salir "); 
+					System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n0. Salir "); 
 					break;
 
 				case 3:
 					//Esta parte me quedo pendiente 
 					//Luego tenemos que hacerla 
 					//Mala mia
+					System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n0. Salir "); 
 					break;
-
-				case 4: 
-					System.out.println("Ingrese el Id que desea cambiar: ");
-					int identificacion = captura.nextInt();
-					System.out.println("Ingrese la cantidad que desea restar: ");
-					float cantidadGastada = captura.nextInt();
-					//Aqui simplemente verifico si puedo restar una cantidad del inventario
-					new Verificar(identificacion,cantidadGastada,ListaAlimentos);
-					System.out.println("1. Registrar\n2. Mostrar Producto\n3. Modificar producto\n4. Verificar\n0. Salir "); 
-					break;
+				
 				default:
 					break;
 			}		

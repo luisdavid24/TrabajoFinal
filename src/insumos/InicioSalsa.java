@@ -23,9 +23,8 @@ public class InicioSalsa {
 			switch(opcion)  
 			{ 
 				case 1:
-					
 					new ManipulacionDeInsumos();
-					
+					System.out.println("1. Crear Insumo\n2. Mostrar Insumo\n3. Modificar Insumo\n0. Salir "); 
 					break;
 					
 				case 2:
@@ -34,22 +33,18 @@ public class InicioSalsa {
 					} catch (ClassNotFoundException e) {
 						e.printStackTrace();
 					}
+					System.out.println("1. Crear Insumo\n2. Mostrar Insumo\n3. Modificar Insumo\n0. Salir "); 
 					break;
 					
 				case 3:
-					
 					ArrayList<Salsa> insumosArrayList=new ArrayList<Salsa>();
-					
 					try {
-						//new MostrarInsumos();
 						new ModificarInsumos(insumosArrayList);
 					} catch (ClassNotFoundException e) {
 						e.printStackTrace();
 					}
-					
-					
+					System.out.println("1. Crear Insumo\n2. Mostrar Insumo\n3. Modificar Insumo\n0. Salir "); 
 					break;
-
 				default:
 					break;
 			}		
