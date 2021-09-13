@@ -11,36 +11,25 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 
-public class ventanaInventario extends JFrame {
+public class ventanaInventario extends JFrame implements ActionListener{
 
 	private JPanel contentPane;
 	private JTextField textId;
 	private JTextField textValor;
 	private JTextField textNombre;
 	private JTextField textCantidad;
+	JButton btnRegistrar,btnMostrar_inventario,btnAtras;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ventanaInventario frame = new ventanaInventario();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public ventanaInventario() {
+		inicarComponente();
+			}
+
+	private void inicarComponente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 523, 377);
 		contentPane = new JPanel();
@@ -49,10 +38,11 @@ public class ventanaInventario extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnAtras = new JButton("Atras\r\n");
+		btnAtras = new JButton("Atras\r\n");
 		btnAtras.setBackground(new Color(135, 206, 235));
 		btnAtras.setBounds(408, 11, 89, 23);
 		contentPane.add(btnAtras);
+		btnAtras.addActionListener(this);
 		
 		textId = new JTextField();
 		textId.setBounds(163, 89, 127, 20);
@@ -90,19 +80,43 @@ public class ventanaInventario extends JFrame {
 		lbCantidad.setBounds(44, 190, 65, 14);
 		contentPane.add(lbCantidad);
 		
-		JButton btnRegistrar = new JButton("Registrar");
+		btnRegistrar = new JButton("Registrar");
 		btnRegistrar.setBackground(new Color(72, 209, 204));
 		btnRegistrar.setBounds(34, 215, 89, 23);
 		contentPane.add(btnRegistrar);
+		btnRegistrar.addActionListener(this);
 		
-		JButton btnMostrar_inventario = new JButton("Mostrar Inventario");
+		btnMostrar_inventario = new JButton("Mostrar Inventario");
 		btnMostrar_inventario.setBackground(new Color(72, 209, 204));
 		btnMostrar_inventario.setBounds(145, 215, 156, 23);
 		contentPane.add(btnMostrar_inventario);
+		btnMostrar_inventario.addActionListener(this);
+		
 		
 		JLabel lblMensajeFormulario = new JLabel("Llene el formulario para ingresar nuevos producto al inventario");
 		lblMensajeFormulario.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblMensajeFormulario.setBounds(34, 45, 402, 34);
 		contentPane.add(lblMensajeFormulario);
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if(btnAtras==e.getSource()) {
+			ventanaBienenida v1=new ventanaBienenida();
+			v1.setVisible(true);
+			this.setVisible(false);
+		}
+		if(btnRegistrar==e.getSource()) {
+			int id=Integer.parseInt(textId.getText());
+			String nombre=textNombre.getText();
+			float cantidad=Float.parseFloat(textCantidad.getText());
+			float valor=Float.parseFloat(textValor.getText());
+			
+			System.out.println("Id: "+id);
+			System.out.println("cantidad: "+cantidad);
+			System.out.println("valor: "+valor);
+			System.out.println("Nombre: "+nombre);
+		
+		}
 	}
 }

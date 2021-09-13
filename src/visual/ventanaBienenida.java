@@ -2,6 +2,8 @@ package visual;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -12,30 +14,17 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 
-public class ventanaBienenida extends JFrame {
+public class ventanaBienenida extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
+	JButton btnInventario,btnInsumos,btnPlatos;
+	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ventanaBienenida frame = new ventanaBienenida();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public ventanaBienenida() {
+		iniciarComponent();
 	}
 
-	/**
-	 * Create the frame.
-	 */
-	public ventanaBienenida() {
+	private void iniciarComponent() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -44,25 +33,49 @@ public class ventanaBienenida extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnInventario = new JButton("Inventario\r\n");
+		btnInventario = new JButton("Inventario\r\n");
 		btnInventario.setBackground(new Color(135, 206, 235));
 		btnInventario.setBounds(22, 209, 106, 23);
 		contentPane.add(btnInventario);
+		btnInventario.addActionListener(this);
 		
-		JButton btnInsumos = new JButton("Insumos");
+		btnInsumos = new JButton("Insumos");
 		btnInsumos.setBackground(new Color(135, 206, 235));
 		btnInsumos.setBounds(148, 209, 89, 23);
 		contentPane.add(btnInsumos);
+		btnInsumos.addActionListener(this);
 		
-		JButton btnPlatos = new JButton("Platos\r\n");
+		
+		btnPlatos = new JButton("Platos\r\n");
 		btnPlatos.setBackground(new Color(135, 206, 235));
 		btnPlatos.setToolTipText("");
 		btnPlatos.setBounds(259, 209, 89, 23);
 		contentPane.add(btnPlatos);
+		btnPlatos.addActionListener(this);
 		
 		JLabel lbImagen = new JLabel("");
-		lbImagen.setIcon(new ImageIcon("C:\\Users\\Asus\\Documents\\Taller-de-lenguajes-de-programacion-1\\TrabajoFinal\\fotos\\restauranteLogo.png"));
+		lbImagen.setIcon(new ImageIcon("fotos\\restauranteLogo.png"));
 		lbImagen.setBounds(66, 11, 208, 160);
 		contentPane.add(lbImagen);
+
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		if(btnInventario==e.getSource()) {
+			ventanaInventario v3=new ventanaInventario();
+			v3.setVisible(true);
+			
+			this.setVisible(false);
+		}
+		if(btnInsumos==e.getSource()) {
+			ventanaInsumos v2=new ventanaInsumos();
+			v2.setVisible(true);
+			this.setVisible(false);
+		}
+		if(btnPlatos==e.getSource()) {
+			ventanaPlato v4=new ventanaPlato();
+			v4.setVisible(true);
+			this.setVisible(false);
+		}
 	}
 }
