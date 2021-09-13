@@ -24,39 +24,24 @@ public ValorDelPlato() {}
 		float cantIns1=0, cantIns2=0, cantIns3=0, cantInv1=0, cantInv2=0, cantInv3=0;
 		float valorins1=0, valorins2=0, valorins3=0, valorinv1=0, valorinv2=0, valorinv3=0;
 		int idInsu1 =0, idInsu2=0, idInsu3=0, idInve1=0, idInve2=0, idInve3=0;
-		int listaValores1[]= {5,500,6,200,7,0};
-		int listaValores2[]= {8,500,6,200,9,400,6,300,4,150,3,150};
-		/*int listaValores3[]= {5,500,6,200,7,0};
-		int listaValores4[]= {5,500,6,200,7,0};
-		int listaValores5[]= {5,500,6,200,7,0};*/
 		
 		
 		if(idPlato ==1) { // este plato es tacos mexicanos(insumos(frijol refrito, guacamole) - inventario(queso, tacos))
 			idInsu1 =5;
-			cantIns1=500; // cantidad en gramos de frijol refrito en insumos
-			//valorins1=3000; // valor de insumos frijol refrito
+			cantIns1=500; 
 			idInsu2=6;
-			cantIns2 = 200;	   //cantidad en gramos de guacamole en insumos	
-			//valorins2=2000; // valor de insumo guacamole
+			cantIns2 = 200;	   
 			idInsu3 =7;
-			cantIns3 = 0;// no tiene insumos en esta posicion
-			//valorins3=0;
-			
+			cantIns3 = 0;
 			idInve1=6;
-			cantInv1 =200;    //cantidad en gramos en inventario de queso
-			//valorinv1=3000; // valor inventario de queso
+			cantInv1 =200;   
 			idInve2=7;
-			cantInv2 =400;   // cantidad en gramos en inventario de tacos
-			//valorinv2=3000; // valor inventario de taco
+			cantInv2 =400;   
 			idInve3=8;
-			cantInv3 =0;      // no tiene elemento del inventario en esta posicion
-			//valorinv3=0;
+			cantInv3 =0;      
+			
 						
 		}
-		
-		//-----------------------------------------------------------------------------------------------
-		
-		
 		if(idPlato ==2) { // este plato es Quesadillas(insumos(tortillas,pollo desmechado, guacamole) - inventario(queso, cebolla, pimenton))
 			idInsu1 =8;
 			cantIns1=500; // cantidad en gramos de tortillas en insumos
@@ -79,6 +64,80 @@ public ValorDelPlato() {}
 			//valorinv3=0;
 						
 		}
+		if(idPlato ==2) { // este plato es Quesadillas(insumos(tortillas,pollo desmechado, guacamole) - inventario(queso, cebolla, pimenton))
+			idInsu1 =8;
+			cantIns1=500; // cantidad en gramos de tortillas en insumos
+			//valorins1=3000; // 
+			idInsu2=6;
+			cantIns2 = 200;	   //cantidad en gramos de guacamole en insumos	
+			//valorins2=2000; // valor de insumo guacamole
+			idInsu3 =9;
+			cantIns3 = 400;     //cantidad en gramos de pollo desmechado en insumos
+			//valorins3=0;
+			
+			idInve1=6;
+			cantInv1 =300;    //cantidad en gramos en inventario de queso
+			//valorinv1=3000; // valor inventario de queso
+			idInve2=4;
+			cantInv2 =150;   // cantidad en gramos en inventario de cebolla
+			//valorinv2=3000; // valor inventario de taco
+			idInve3=3;
+			cantInv3 =150;      // cantidad en gramos en inventario de pimenton
+			//valorinv3=0;
+						
+		}
+		if(idPlato ==3) { // este plato es Quesadillas(insumos(tortillas,pollo desmechado, guacamole) - inventario(queso, cebolla, pimenton))
+			idInsu1 =4;
+			cantIns1=200; // cantidad en gramos de tortillas en insumos
+			idInsu2=12;
+			cantIns2 = 400;	   //cantidad en gramos de guacamole en insumos	
+			idInsu3 =4;
+			cantIns3 = 100;     //cantidad en gramos de pollo desmechado en insumos
+			
+			idInve1=3;
+			cantInv1 =300;    //cantidad en gramos en inventario de queso
+			idInve2=4;
+			cantInv2 =200;   // cantidad en gramos en inventario de cebolla
+			idInve3=0;
+			cantInv3 =0;      // cantidad en gramos en inventario de pimenton
+			
+						
+		}
+		if(idPlato ==4) { // este plato es Quesadillas(insumos(tortillas,pollo desmechado, guacamole) - inventario(queso, cebolla, pimenton))
+			idInsu1 =13;
+			cantIns1=250; // cantidad en gramos de tortillas en insumos
+			idInsu2=3;
+			cantIns2 = 200;	   //cantidad en gramos de guacamole en insumos	
+			idInsu3 =4;
+			cantIns3 = 100;     //cantidad en gramos de pollo desmechado en insumos
+			
+			idInve1=1;
+			cantInv1 =200;    //cantidad en gramos en inventario de queso
+			idInve2=3;
+			cantInv2 =300;   // cantidad en gramos en inventario de cebolla
+			idInve3=5;
+			cantInv3 =150;      // cantidad en gramos en inventario de pimenton
+			
+						
+		}
+		if(idPlato ==5) { // este plato es Quesadillas(insumos(tortillas,pollo desmechado, guacamole) - inventario(queso, cebolla, pimenton))
+			idInsu1 =12;
+			cantIns1=200; // cantidad en gramos de tortillas en insumos
+			idInsu2=6;
+			cantIns2 = 200;	   //cantidad en gramos de guacamole en insumos	
+			idInsu3 =0;
+			cantIns3 =0;     //cantidad en gramos de pollo desmechado en insumos
+			
+			idInve1=4;
+			cantInv1 =300;    //cantidad en gramos en inventario de queso
+			idInve2=4;
+			cantInv2 =200;   // cantidad en gramos en inventario de cebolla
+			idInve3=5;
+			cantInv3 =100;      // cantidad en gramos en inventario de pimenton
+			
+						
+		}
+		
 		
 		
 		try {

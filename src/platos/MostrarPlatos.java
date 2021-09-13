@@ -30,7 +30,6 @@ public class MostrarPlatos {
 				ObjectInputStream leer_datos = new ObjectInputStream(ruta_entrada);
 				ObjetoPlato[] datos_leidos = (ObjetoPlato[]) leer_datos.readObject();
 				leer_datos.close();
-				System.out.println("---Entro---");
 				for(ObjetoPlato e : datos_leidos) {
 					System.out.println("Nombre: "+e.getNombre()+" Id: "+e.getId()+" Cantidad: "+e.getCantidad()+"Kg Valor: "+e.getValor()+"$");
 				}

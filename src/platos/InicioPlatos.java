@@ -49,7 +49,7 @@ public class InicioPlatos {
 					break;
 				case 2:
 					String listaIngredientes2[]= {"3","400","10","4","200","10"};//{id, cantidad,cantidad-Minima} salsa
-					String listaInsumos2[]= {"12","250","6","250","4","100"};//{id, cantidad} insumo
+					String listaInsumos2[]= {"12","250","6","250","4","100","5","50"};//{id, cantidad} insumo
 					GenerarPlato generar2=new GenerarPlato();
 					boolean condicion2=generar2.saberSiPuedeCobrar(listaIngredientes2, listaInsumos2);
 					
@@ -112,7 +112,7 @@ public class InicioPlatos {
 					boolean condicion5=generar5.saberSiPuedeCobrar(listaIngredientes5, listaInsumos5);
 					if(condicion5==true) {
 						ValorDelPlato valor1=new ValorDelPlato();
-						int id=4;
+						int id=5;
 						float valorOperacion=valor1.valorPlato(id);
 						arrayPlato=generar5.modificarArrayPlato(listaIngredientes5, listaInsumos5, arrayPlato, id, 20,"Trompetas",valorOperacion);
 						arrayInsumos=generar5.llenarArrayIngrediente(arrayInsumos, listaIngredientes5);
